@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Sign In</title>
+    <style>
+        /* Reset default styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Body styling */
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: #f2f2f2;
+        }
+
+        /* Container styling */
+        .sign-in-container {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            width: 100%;
+            max-width: 380px;
+            text-align: center;
+        }
+
+        /* Google logo */
+        .google-logo {
+            width: 75px;
+            margin-bottom: 20px;
+        }
+
+        /* Sign in title */
+        .sign-in-container h2 {
+            font-size: 24px;
+            font-weight: 500;
+            color: #202124;
+            margin-bottom: 10px;
+        }
+
+        .sign-in-container p {
+            font-size: 14px;
+            color: #5f6368;
+            margin-bottom: 24px;
+        }
+
+        /* Input fields */
+        .sign-in-container input[type="email"],
+        .sign-in-container input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #dadce0;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        /* Sign-in button */
+        .sign-in-container button {
+            width: 100%;
+            padding: 12px;
+            background-color: #1a73e8;
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .sign-in-container button:hover {
+            background-color: #1558b0;
+        }
+
+        /* Footer links */
+        .sign-in-container .footer-links {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .sign-in-container .footer-links a {
+            font-size: 14px;
+            color: #1a73e8;
+            text-decoration: none;
+        }
+
+        .sign-in-container .footer-links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="sign-in-container">
+        <!-- Google logo -->
+        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google Logo" class="google-logo">
+
+        <!-- Sign-in text -->
+        <h2>Sign in</h2>
+        <p>to continue to Google</p>
+
+        <!-- Email Form -->
+        <div id="email-view">
+            <form id="email-form" onsubmit="showPasswordView(event)">
+                <input type="email" placeholder="Email or phone" required>
+                <button type="submit">Next</button>
+            </form>
+            <div class="footer-links">
+                <a href="#">Forgot email?</a>
+                <a href="#">Create account</a>
+            </div>
+        </div>
+
+        <!-- Password Form (hidden initially) -->
+        <div id="password-view" style="display: none;">
+            <form id="password-form" onsubmit="redirectToHome(event)">
+                <input type="password" placeholder="Enter your password" required>
+                <button type="submit">Next</button>
+            </form>
+            <div class="footer-links">
+                <a href="#">Forgot password?</a>
+                <a href="#">Help</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to show password view and hide email view
+        function showPasswordView(event) {
+            event.preventDefault();
+            document.getElementById("email-view").style.display = "none";
+            document.getElementById("password-view").style.display = "block";
+        }
+
+        // Function to redirect to "home" page after entering password
+        function redirectToHome(event) {
+            event.preventDefault();
+            alert("Sign in successful! Redirecting to Google Home...");
+            window.location.href = "https://www.google.com"; // Replace with your desired "home" page
+        }
+    </script>
+</body>
+</html>
